@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Birthday Letter</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+font-family:'Poppins',sans-serif;
+
+background:
+radial-gradient(circle at top left,#fff3f8 0%,transparent 30%),
+radial-gradient(circle at bottom right,#ffe4ef 0%,transparent 35%),
+linear-gradient(135deg,#ffd9e8,#ffe9f3,#fff6fa);
+
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* GRID */
+
+body::before{
+content:"";
+position:absolute;
+inset:0;
+
+background-image:
+linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px);
+
+background-size:70px 70px;
+opacity:0.45;
+z-index:-3;
+}
+
+/* BLURS */
+
+.blur{
+position:absolute;
+border-radius:50%;
+filter:blur(80px);
+z-index:-2;
+opacity:0.7;
+}
+
+.blur1{
+width:320px;
+height:320px;
+background:#ffbfd8;
+top:-120px;
+left:-70px;
+animation:move1 8s ease-in-out infinite alternate;
+}
+
+.blur2{
+width:300px;
+height:300px;
+background:#ffd6f0;
+bottom:-120px;
+right:-80px;
+animation:move2 10s ease-in-out infinite alternate;
+}
+
+@keyframes move1{
+to{
+transform:translate(40px,40px);
+}
+}
+
+@keyframes move2{
+to{
+transform:translate(-40px,-30px);
+}
+}
+
+/* SPARKLES */
+
+.sparkles span{
+position:absolute;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+opacity:0.8;
+animation:twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+0%,100%{
+transform:scale(0.6);
+opacity:0.4;
+}
+
+50%{
+transform:scale(1.4);
+opacity:1;
+}
+}
+
+/* DECORS */
+
+.floating-decor{
+position:absolute;
+font-size:28px;
+animation:floaty 6s ease-in-out infinite;
+opacity:0.8;
+pointer-events:none;
+z-index:2;
+}
+
+.decor1{
+top:10%;
+left:8%;
+}
+
+.decor3{
+top:15%;
+right:10%;
+animation-delay:2s;
+}
+
+.decor4{
+bottom:12%;
+right:8%;
+animation-delay:3s;
+}
+
+.decor5{
+top:48%;
+left:48%;
+animation-delay:4s;
+}
+
+@keyframes floaty{
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-15px);
+}
+}
+
+/* MAIN */
+
+.container{
+  width:92%;
+  max-width:1250px;
+  height:95vh;
+  display:flex;
+  gap:20px;
+}
+
+/* LEFT SIDE */
+
+.left-side{
+width:35%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+/* PHOTO */
+
+.photo-wrapper{
+position:relative;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.photo-ring{
+width:330px;
+height:330px;
+border-radius:50%;
+
+padding:12px;
+
+background:
+linear-gradient(135deg,#ff8fb1,#ffd3e5,#ff9ec4);
+
+box-shadow:
+0 0 30px rgba(255,105,180,0.25),
+0 0 80px rgba(255,192,203,0.35);
+
+animation:ringFloat 5s ease-in-out infinite;
+}
+
+@keyframes ringFloat{
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-12px);
+}
+}
+
+.photo{
+width:100%;
+height:100%;
+border-radius:50%;
+overflow:hidden;
+border:8px solid rgba(255,255,255,0.9);
+}
+
+.photo img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* NAME TAG */
+
+.name-tag{
+margin-top:-12px;
+
+padding:14px 34px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,0.72);
+
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.6);
+
+box-shadow:
+0 8px 25px rgba(255,105,180,0.12);
+
+font-size:1.5rem;
+
+font-weight:600;
+
+font-family:'Playfair Display',serif;
+
+color:#333;
+
+z-index:10;
+}
+
+/* RIGHT */
+
+.right-side{
+width:65%;
+position:relative;
+}
+
+.title{
+font-family:'Great Vibes', cursive;
+
+font-size:clamp(82px,8vw,118px);
+
+text-align:center;
+
+margin-bottom:28px;
+
+position:relative;
+
+line-height:1.1;
+
+letter-spacing:1px;
+
+color:#ff7aa8;
+
+text-shadow:
+0 2px 4px rgba(255,140,180,0.15);
+
+animation:fadeInDown 1.2s ease;
+}
+
+.title::before{
+content:"✦";
+
+position:absolute;
+
+left:70px;
+top:10px;
+
+font-size:22px;
+
+color:#ff9abc;
+}
+
+.title::after{
+content:"✦";
+
+position:absolute;
+
+right:70px;
+top:18px;
+
+font-size:18px;
+
+color:#ffb38f;
+}
+
+@keyframes fadeInDown{
+from{
+opacity:0;
+transform:translateY(-30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.letter-box{
+  width:100%;
+
+  background:rgba(255,255,255,0.28);
+
+  backdrop-filter:blur(16px);
+
+  border:1px solid rgba(255,255,255,0.35);
+
+  border-radius:35px;
+
+  padding:30px 34px;
+
+  position:relative;
+
+  box-shadow:
+  0 15px 35px rgba(0,0,0,0.08);
+}
+
+.typing-text{
+  font-size:0.96rem;
+
+  line-height:1.75rem;
+
+  color:#303030;
+
+  white-space:pre-wrap;
+
+  border-right:3px solid #ff5d96;
+
+  min-height:420px;
+
+  animation:blink 0.7s infinite;
+}
+
+@keyframes blink{
+50%{
+border-color:transparent;
+}
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+body{
+height:auto;
+overflow:auto;
+padding:40px 0;
+}
+
+.container{
+flex-direction:column;
+height:auto;
+gap:35px;
+}
+
+.left-side,
+.right-side{
+width:100%;
+}
+
+.title{
+font-size:68px;
+}
+
+.photo-ring{
+width:260px;
+height:260px;
+}
+
+.name-tag{
+font-size:1.2rem;
+padding:12px 24px;
+}
+
+.letter-box{
+padding:28px;
+}
+
+.typing-text{
+min-height:auto;
+font-size:1rem;
+line-height:1.9rem;
+}
+
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0px);
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
+
+<div class="sparkles">
+<span style="top:8%;left:12%;animation-delay:1s"></span>
+<span style="top:15%;left:80%;animation-delay:2s"></span>
+<span style="top:70%;left:10%;animation-delay:3s"></span>
+<span style="top:80%;left:75%;animation-delay:1s"></span>
+<span style="top:40%;left:90%;animation-delay:4s"></span>
+<span style="top:30%;left:5%;animation-delay:2s"></span>
+</div>
+
+<div class="floating-decor decor1">✨</div>
+<div class="floating-decor decor3">🌸</div>
+<div class="floating-decor decor4">🦋</div>
+<div class="floating-decor decor5">⭐</div>
+
+<div class="container">
+
+<!-- LEFT -->
+
+<div class="left-side">
+
+<div class="photo-wrapper">
+
+<div class="photo-ring">
+
+<div class="photo">
+<img src="./images/photo1.jpg" alt="">
+</div>
+
+</div>
+
+<div class="name-tag">
+Lil Kiddo 🌸
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="right-side">
+
+<div class="title" id="animatedTitle"></div>
+
+<div class="letter-box">
+<div class="typing-text" id="typing"></div>
+</div>
+
+</div>
+
+</div>
+
+<!-- HEART CURSOR -->
+
+<script>
+
+var colours = ['#ff4f81','#ff6fa5','#ff85b5','#ff3d77','#ff9ac7'];
+
+var minisize = 12;
+var maxisize = 22;
+var hearts = 50;
+
+var x = ox = 400;
+var y = oy = 300;
+
+var herz = [];
+var herzx = [];
+var herzy = [];
+var herzs = [];
+
+document.onmousemove = mouse;
+
+function mouse(e){
+
+if(e){
+y = e.pageY;
+x = e.pageX;
+}
+
+}
+
+function createDiv(height,width){
+
+var div = document.createElement("div");
+
+div.style.position = "absolute";
+div.style.height = height;
+div.style.width = width;
+div.style.overflow = "hidden";
+div.style.backgroundColor = "transparent";
+
+return div;
+}
+
+function herzle(){
+
+var c;
+
+if(Math.abs(x - ox) > 1 || Math.abs(y - oy) > 1){
+
+ox = x;
+oy = y;
+
+for(c = 0; c < hearts; c++){
+
+if(herzy[c] === false){
+
+herz[c].firstChild.nodeValue = "❤";
+
+herz[c].style.left = (herzx[c] = x) + "px";
+herz[c].style.top = (herzy[c] = y) + "px";
+
+herz[c].style.fontSize = minisize + "px";
+herz[c].style.color = colours[c % colours.length];
+herz[c].style.visibility = "visible";
+
+herzs[c] = minisize;
+
+break;
+}
+}
+}
+
+for(c = 0; c < hearts; c++){
+
+if(herzy[c] !== false){
+
+herzy[c] -= herzs[c] / minisize + 1;
+
+herzx[c] += Math.sin(herzy[c] * 0.03);
+
+if(herzy[c] < -50){
+
+herz[c].style.visibility = "hidden";
+herzy[c] = false;
+}
+
+else{
+
+if(herzs[c] < maxisize){
+
+herzs[c]++;
+herz[c].style.fontSize = herzs[c] + "px";
+}
+
+herz[c].style.top = herzy[c] + "px";
+herz[c].style.left = herzx[c] + "px";
+}
+}
+}
+
+setTimeout(herzle,40);
+}
+
+window.onload = function(){
+
+var i,heart;
+
+for(i = 0; i < hearts; i++){
+
+heart = createDiv("auto","auto");
+
+heart.style.visibility = "hidden";
+heart.style.zIndex = "9999";
+heart.style.pointerEvents = "none";
+
+heart.appendChild(document.createTextNode("❤"));
+
+document.body.appendChild(heart);
+
+herz[i] = heart;
+herzy[i] = false;
+}
+
+herzle();
+
+setTimeout(typeLetter,1200);
+}
+
+</script>
+
+<!-- MAIN SCRIPT -->
+
+<script>
+
+const title = "Happyy Birthdayy";
+
+const titleContainer =
+document.getElementById("animatedTitle");
+
+title.split("").forEach((letter,index)=>{
+
+const span = document.createElement("span");
+
+span.innerHTML =
+letter === " " ? "&nbsp;" : letter;
+
+span.style.opacity = 0;
+
+span.style.display = "inline-block";
+
+span.style.animation =
+`fadeIn 0.5s forwards ${index * 0.08}s`;
+
+titleContainer.appendChild(span);
+
+});
+
+const message = `Happyyy Birthdayyy my Mooneii 🌸
+I honestly don’t even know where to start because there are so many small things about you that make people feel comfortable around you without even realizing it.
+Not all people become special loudly.
+Some slowly become a part of your everyday happiness… and somehow you became one of those people for me ✨
+Thank you for all the random conversations, the laughs that make normal moments memorable, and the soft kind of presence you carry everywhere you go.🌷
+And I genuinely hope this year brings you everything your heart secretly wishes for —
+peace, happiness, exciting memories, success, late night laughs, and moments that make you smile for absolutely no reason 🤍
+I also hope that no matter how busy life gets, you always stay the same sweet, chaotic, caring, adorable person you are right now 🥹✨
+So today, just smile a little extra okay?
+Because this day is special…
+after all, it’s the day my favorite Lil Kiddo was born 🌸🎂
+Once again,Veryy veryyy happyyy birthdayyy My Princesss 🥹✨`;
+
+const typing =
+document.getElementById("typing");
+
+let index = 0;
+
+function typeLetter(){
+
+if(index < message.length){
+
+typing.innerHTML +=
+message.charAt(index);
+
+index++;
+
+setTimeout(typeLetter,28);
+}
+}
+
+</script>
+
+</body>
+</html>
